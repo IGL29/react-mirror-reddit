@@ -12,7 +12,6 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const express = require('express');
-const { write } = require('fs');
 
 const hmrServer = express();
 const clientCompiler = webpack(webpackClientConfig);
