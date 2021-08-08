@@ -1,5 +1,6 @@
+import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
-import styles from './header.scss';
+import styles from '../header.scss';
 
 console.log(styles);
 
@@ -10,3 +11,5 @@ export function Header() {
     </header>
   );
 }
+
+export const Header = hot(HeaderComponent);
