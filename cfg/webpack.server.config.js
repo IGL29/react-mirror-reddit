@@ -22,7 +22,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', 'css'],
   },
 
   module: {
@@ -42,6 +42,7 @@ module.exports = {
               },
             },
           },
+          'sass-loader',
         ]
       },
     ]
