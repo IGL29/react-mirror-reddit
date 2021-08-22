@@ -5,9 +5,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
+// const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
 
 function setupDevTool() {
-  if (IS_DEV) return 'eval';
+  if (IS_DEV) return 'source-map';
   if (IS_PROD) return false;
 }
 
@@ -50,18 +51,28 @@ module.exports = {
               },
             }
           },
-          'sass-loader',
-        ]
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: IS_DEV,
+            }
+          }
+        ],
+        // exclude: GLOBAL_CSS_REGEXP
       },
+      // {
+      //   test: GLOBAL_CSS_REGEXP,
+      //   use: ['style-loader', 'css-loader', 'sass-loader'],
+      // }
     ]
   },
 
   devtool: setupDevTool(),
 
   plugins: (IS_DEV)
-  ? [
-    new CleanWebpackPlugin(),
-    new HotModuleReplacementPlugin(),
-  ]
-  : [],
+    ? [
+      new CleanWebpackPlugin(),
+      new HotModuleReplacementPlugin(),
+    ]
+    : [],
 };
