@@ -1,10 +1,12 @@
+$white: #FFF;
+
 .content {
   overflow: hidden;
 }
 
 @media (min-width: 1024px) {
   .content {
-    background-color: #ffffff;
+    background-color: $white;
     border-radius: 7px 7px 0 0;
   }
 }

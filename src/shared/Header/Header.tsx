@@ -1,15 +1,16 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import styles from './header.scss';
+import { SearchBlock } from './SearchBlock';
+import { ThreadTitle } from './ThreadTitle';
+import { SortBlock } from './SortBlock';
 
-interface IContentProps {
-  children?: React.ReactNode;
-}
-
-function Header({ children }: IContentProps) {
+function Header() {
   return (
     <header className={ styles.header }>
-      { children }
+      <SearchBlock />
+      <ThreadTitle />
+      <SortBlock />
     </header>
   );
 }

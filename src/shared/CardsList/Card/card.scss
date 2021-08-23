@@ -13,7 +13,7 @@ button {
   display: flex;
   flex-flow: row wrap;
 }
-.card > *, .text-content > * {
+.card > * {
   flex: 1 1 100%;
 }
 .card > * + * {

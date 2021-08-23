@@ -5,6 +5,10 @@
   margin: 0;
 }
 
+.text-content > * {
+  flex: 1 1 100%;
+}
+
 .postLink {
   overflow: hidden;
   -webkit-line-clamp: 2;

@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
-// const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
+const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
 
 function setupDevTool() {
   if (IS_DEV) return 'source-map';
