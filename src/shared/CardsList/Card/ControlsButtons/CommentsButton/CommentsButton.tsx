@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './commentsButton.scss';
 
-export default function CommentsButton() {
+export default function CommentsButton(): JSX.Element {
   return(
     <button className={ styles.commentsButton }>
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

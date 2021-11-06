@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './karmaCounter.scss';
 
-export default function KarmaCounter() {
+export default function KarmaCounter(): JSX.Element {
   return(
     <div className={ styles.karmaCounter }>
       <button className={ styles.up }>

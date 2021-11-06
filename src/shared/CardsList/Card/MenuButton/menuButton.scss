@@ -13,9 +13,15 @@
   justify-content: center;
   transform: rotate(90deg);
   border-radius: 31px;
-}
-.menuButton:active {
-  background-color: rgba(51, 51, 51, 0.1);
+  transition: background-color 0.3s;
+
+  :hover {
+    background-color: rgba(51, 51, 51, 0.03);
+  }
+
+  :active {
+    background-color: rgba(51, 51, 51, 0.1);
+  }
 }
 
 .dropdown {

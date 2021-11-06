@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './menu.scss';
+import styles from './menuButton.scss';
 
-export default function Menu() {
+export default function MenuButton() {
   return(
     <div className={ styles.menu }>
       <button className={ styles.menuButton }>

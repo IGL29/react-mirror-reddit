@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
-const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
 
 function setupDevTool() {
   if (IS_DEV) return 'source-map';
@@ -18,6 +17,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', 'css'],
     alias: {
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
+      'shared': path.resolve(process.cwd(), 'src/shared'),
     }
   },
 
@@ -58,12 +58,7 @@ module.exports = {
             }
           }
         ],
-        // exclude: GLOBAL_CSS_REGEXP
       },
-      // {
-      //   test: GLOBAL_CSS_REGEXP,
-      //   use: ['style-loader', 'css-loader', 'sass-loader'],
-      // }
     ]
   },
 

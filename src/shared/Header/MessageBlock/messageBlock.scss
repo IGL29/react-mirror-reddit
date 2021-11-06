@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  width: 20px;
+  height: 16px;
+  background-image: url("../../../../public/img/message-icon.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.count{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  margin-right: 5px;
+  padding: 4px;
+  background-color: #CC6633;
+  border-radius: 50%;
+}
+
+.countText {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .countText {
+    font-size: 9px;
+  }
+
+  .count {
+    min-width: 14px;
+  }
+
+  .button {
+    width: 12px;
+    height: 10px;
+  }
+}

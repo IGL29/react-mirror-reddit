@@ -5,7 +5,7 @@ interface IContentProps {
   children?: React.ReactNode;
 }
 
-export default function Content({ children }: IContentProps) {
+export default function Content({ children }: IContentProps): JSX.Element {
   return(
     <main className={ styles.content }>
       { children }

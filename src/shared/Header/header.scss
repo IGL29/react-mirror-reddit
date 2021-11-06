@@ -1,14 +1,72 @@
-@media all and (min-width: 1024px) {
-  .header {
+ .container {
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
-    padding: 40px;
+    max-width: 1540px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 73px;
+    padding-right: 40px;
+    padding-bottom: 73px;
+    padding-left: 40px;
   }
-}
 
-@media all and (min-width: 1540px) {
-  .header {
-    padding: 67px 0;
+ .wrapper {
+   display: flex;
+   align-items: center;
+ }
+
+  .thread-title {
+    margin: 0 auto 0 0;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 23px;
   }
-}
+
+  .headerMessage {
+    margin-right: 50px;
+  }
+
+  .headerSearch {
+    margin-right: 50px;
+  }
+
+  @media (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .thread-title {
+      order: 2;
+    }
+
+    .wrapper {
+      width: 100%;
+      justify-content: space-between;
+      order: 1;
+      margin-bottom: 38px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      background-color: #FFFFFF;
+    }
+
+    .headerSearch {
+      order: 2;
+      margin-right: 14px;
+    }
+
+    .headerMessage {
+      margin-right: 0;
+      order: 3;
+    }
+
+    .headerProfile {
+      order: 1;
+      margin-right: 14px;
+    }
+  }

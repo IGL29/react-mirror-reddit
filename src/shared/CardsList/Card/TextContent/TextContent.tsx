@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './title.scss';
 import { MetaData } from '../MetaData';
 
-export default function TextContent() {
+export default function TextContent(): JSX.Element {
   return (
     <div className={ styles['text-content'] }>
       <MetaData />
