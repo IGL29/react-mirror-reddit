@@ -15,11 +15,11 @@
   border-radius: 31px;
   transition: background-color 0.3s;
 
-  :hover {
-    background-color: rgba(51, 51, 51, 0.03);
+  &:hover {
+    background-color: rgba(51, 51, 51, 0.07);
   }
 
-  :active {
+  &:active {
     background-color: rgba(51, 51, 51, 0.1);
   }
 }

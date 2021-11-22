@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import styles from './dropDown.scss';
 import {IDropdownProps} from './interfaces';
+import styles from './dropDown.scss';
 
 const NOOP = () => {
 };
@@ -28,7 +28,7 @@ export default function DropDown({
         {button}
       </div>
       {isDropdownOpen && (
-        <div className={styles['dropdown__list']} onClick={() => setIsDropdownOpen(false)}>
+        <div className={styles['dropdown__list-container']} onClick={() => setIsDropdownOpen(false)}>
           {children}
         </div>
       )}

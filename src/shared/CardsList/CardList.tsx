@@ -1,4 +1,6 @@
+// Vendor
 import React from 'react';
+// Internals
 import {Card} from './Card';
 import styles from './cardList.scss';
 

@@ -1,20 +1,22 @@
+// Vendor
 import React from 'react';
+// Internals
+import {KarmaCounter} from './KarmaCounter';
+import {CommentsButton} from './CommentsButton';
+import {ShareButton} from './ShareButton';
+import {SaveButton} from './SaveButton';
 import styles from './controls.scss';
-import { KarmaCounter } from './KarmaCounter';
-import { CommentsButton } from './CommentsButton';
-import { ShareButton } from './ShareButton';
-import { SaveButton } from './SaveButton';
 
 export default function ControlsButton() {
-  return(
-    <div className={ styles.controls }>
-      <KarmaCounter />
-      <CommentsButton />
+  return (
+    <div className={styles.controls}>
+      <KarmaCounter/>
+      <CommentsButton/>
 
-      <div className={ styles.actions }>
-        <ShareButton />
-        <SaveButton />
+      <div className={styles.actions}>
+        <ShareButton/>
+        <SaveButton/>
       </div>
-  </div>
+    </div>
   )
 }

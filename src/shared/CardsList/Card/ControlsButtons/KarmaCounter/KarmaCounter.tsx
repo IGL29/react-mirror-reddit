@@ -1,10 +1,12 @@
+// Vendor
 import React from 'react';
+// Internals
 import styles from './karmaCounter.scss';
 
 export default function KarmaCounter(): JSX.Element {
-  return(
-    <div className={ styles.karmaCounter }>
-      <button className={ styles.up }>
+  return (
+    <div className={styles.karmaCounter}>
+      <button className={styles.up}>
         <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.5 0L0 10H19L9.5 0Z" fill="#C4C4C4"/>
         </svg>
@@ -12,7 +14,7 @@ export default function KarmaCounter(): JSX.Element {
 
       <span>234</span>
 
-      <button className={ styles.down }>
+      <button className={styles.down}>
         <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.5 10L19 0L8.74228e-07 -1.66103e-06L9.5 10Z" fill="#C4C4C4"/>
         </svg>

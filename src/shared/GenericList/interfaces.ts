@@ -10,4 +10,6 @@ export interface IItem {
 
 export interface IGenericListProps {
   list: IItem[];
+  ContainerAs?: 'ul' | 'div';
+  className?: string;
 }

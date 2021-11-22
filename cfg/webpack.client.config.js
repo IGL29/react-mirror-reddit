@@ -1,6 +1,7 @@
 const path = require('path');
-const { HotModuleReplacementPlugin } = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {HotModuleReplacementPlugin} = require('webpack');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
@@ -12,18 +13,20 @@ function setupDevTool() {
 }
 
 module.exports = {
+  mode: NODE_ENV ? NODE_ENV : 'development',
+
+  context: path.resolve(__dirname, '../'),
 
   resolve: {
+    plugins: [new TsconfigPathsWebpackPlugin()],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', 'css'],
     alias: {
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
-      'shared': path.resolve(process.cwd(), 'src/shared'),
     }
   },
 
-  mode: NODE_ENV ? NODE_ENV : 'development',
   entry: [
-    path.resolve(__dirname, '../src/client/index.jsx'),
+    './src/client/index.jsx',
     'webpack-hot-middleware/client?path=http://localhost:3001/static/__webpack_hmr'
   ],
 
@@ -35,6 +38,25 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      // {
+      //   test: /\.(png|jpg)$/i,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 8192,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.[tj]sx?$/,
         use: ['ts-loader']

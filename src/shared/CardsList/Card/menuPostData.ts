@@ -1,22 +1,28 @@
-export const menuPostData = [
+export interface IMenuPostData {
+  icon: string;
+  text: string;
+  className?: string;
+}
+
+export const menuPostData: IMenuPostData[] = [
   {
-    icon: '../../../../public/img/comments-icon.svg',
-    text: 'Комментарии'
+    icon: '@img/comments-icon.svg',
+    text: 'Комментарии',
   },
   {
-    icon: '../../../../public/img/share-icon.svg',
-    text: 'Поделиться'
+    icon: '@img/share-icon.svg',
+    text: 'Поделиться',
   },
   {
-    icon: '../../../../public/img/hide-icon.svg',
-    text: 'Скрыть'
+    icon: '@img/hide-icon.svg',
+    text: 'Скрыть',
   },
   {
-    icon: '../../../../public/img/save-icon.svg',
-    text: 'Сохранить'
+    icon: '@img/save-icon.svg',
+    text: 'Сохранить',
   },
   {
-    icon: '../../../../public/img/complain-icon.svg',
-    text: 'Пожаловаться'
+    icon: '@img/complain-icon.svg',
+    text: 'Пожаловаться',
   },
 ];

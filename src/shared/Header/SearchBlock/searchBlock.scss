@@ -28,7 +28,7 @@ $white: #FFF;
   transform: translateY(-50%);
   width: 19px;
   height: 19px;
-  background-image: url("../../../../public/img/search-icon.svg");
+  background-image: url("../../../../assets/img/search-icon.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,6 +48,7 @@ $white: #FFF;
     background-color: #F4F4F4;
     box-shadow: none;
     font-size: 12px;
+
     &::placeholder {
       font-size: 12px;
     }

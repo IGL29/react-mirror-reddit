@@ -1,13 +1,15 @@
+// Vendor
 import React from 'react';
-import {IGenericListProps} from './interfaces';
+// Internals
+import {IGenericListProps, IItem} from './interfaces';
 
 const NOOP = () => {
 };
 
-export default function GenericList({list}: IGenericListProps): JSX.Element {
+export default function GenericList({list, ContainerAs = 'div', className}: IGenericListProps): JSX.Element {
   return (
-    <>
-      {list.map(({As = 'div', text, onClick = NOOP, className, id, href, icon}) => (
+    <ContainerAs className={className}>
+      {list.map(({As = 'div', text, onClick = NOOP, className, id, href, icon}: IItem) => (
         <As
           style={{backgroundImage: icon}}
           className={className}
@@ -18,6 +20,6 @@ export default function GenericList({list}: IGenericListProps): JSX.Element {
           {text}
         </As>
       ))}
-    </>
+    </ContainerAs>
   )
 }
