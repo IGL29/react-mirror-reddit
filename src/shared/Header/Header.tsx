@@ -26,11 +26,13 @@ function Header({title}: IHeaderProps): JSX.Element {
           {title}
         </h1>
 
+        <div className={styles.wrapDropdown}>
         <DropDown button={
           <button className={styles.dropDownButton}>Лучшие</button>
         }>
           <GenericList list={dataCategoryWithId} className={styles.containerList}/>
         </DropDown>
+        </div>
 
         <div className={styles.wrapper}>
           <MessageBlock className={styles.headerMessage}/>

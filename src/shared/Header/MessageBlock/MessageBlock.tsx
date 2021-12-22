@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './messageBlock.scss';
+import * as Icons from '@Icons';
 
 const countMessageData = 10;
 
@@ -14,7 +15,9 @@ export default function MessageBlock({ className }: IMessageBlockProps): JSX.Ele
       <div className={ styles.count }>
         <span className={ styles.countText }>{ countMessageData }</span>
       </div>
-      <button className={ styles.button } />
+      <button className={ styles.button }>
+        <Icons.MessageIcon />
+      </button>
     </div>
   )
 }

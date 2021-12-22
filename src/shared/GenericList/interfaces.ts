@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface IItem {
   text: string;
   id: string;
@@ -5,7 +7,7 @@ export interface IItem {
   className?: string;
   As?: 'a' | 'li' | 'button' | 'div';
   href?: string;
-  icon?: string;
+  Icon?: React.FC;
 }
 
 export interface IGenericListProps {

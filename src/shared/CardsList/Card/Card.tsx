@@ -5,8 +5,7 @@ import {MenuButton} from './MenuButton';
 import {menuPostData} from './menuPostData';
 import {ControlsButtons} from './ControlsButtons';
 import {TextContent} from './TextContent';
-import {Preview} from './Preview';
-import cn from 'classnames';
+// import cn from 'classnames';
 import {DropDown} from '@shared/DropDown';
 import {generateId} from '@utils/react/generateRandomIndex';
 import {GenericList} from "@shared/GenericList";
@@ -22,14 +21,25 @@ export default function Card(): JSX.Element {
   return (
     <li className={styles.card}>
       <div className={styles.wrapper}>
+        <div className={styles.imgWrapper}>
+          <img
+            className={styles.previewImg}
+            src="https://luchanka.com.ua/wp-content/uploads/2017/07/christmas-fun-1000x600.jpg"
+            alt=""
+          />
+        </div>
         <TextContent/>
-        <Preview/>
       </div>
 
+      <div className={styles.wrapButtons}>
       <DropDown button={<MenuButton/>}>
-        <GenericList list={menuPostDataWithID} className={styles['list-container']}/>
-      </DropDown>
-      <ControlsButtons/>
+        <div className={styles['dropdown-content-wrapper']}>
+          <GenericList list={menuPostDataWithID} className={styles['list']}/>
+          <button className={styles.buttonClose}>Закрыть</button>
+        </div>
+          </DropDown>
+          <ControlsButtons/>
+      </div>
     </li>
   );
 }

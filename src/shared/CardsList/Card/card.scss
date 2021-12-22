@@ -1,3 +1,31 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  // max-height: 147px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.card:hover, .card:focus-within {
+  outline: 1px solid #999;
+}
+
+.imgWrapper {
+  margin-right: 38px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrapButtons {
+  display: flex;
+  align-items: center;
+}
+
 button {
   background: transparent;
   border: 0;
@@ -6,40 +34,41 @@ button {
 }
 
 .card {
-  position: relative;
+  // position: relative;
   background-color: #FFF;
   border-radius: 7px;
-  padding: 20px 20px 10px;
+  //padding: 20px 20px 10px;
   display: flex;
-  flex-flow: row wrap;
+  // flex-flow: row wrap;
 }
 
-.card > * {
-  flex: 1 1 100%;
-}
-
-.card > * + * {
-  padding: 13px 0 0;
+.previewImg {
+  width: 250px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card:hover h2 a, .card:focus-within h2 a {
   color: #CC6633;
 }
 
-// dropDown
-
-.list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 7px 20px;
+.dropdown-content-wrapper {
   background-color: #FFFFFF;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 
+.list {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: flex-start;
+  padding: 7px 20px;
+}
+
 .item {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: 7px 5px;
   font-size: 14px;
@@ -60,33 +89,12 @@ button {
   }
 }
 
-@media all and (min-width: 1024px) {
-  .card {
-    background-color: transparent;
-    flex-flow: row nowrap;
-    max-height: 107px;
-    padding: 0 40px;
-  }
-  .card > * {
-    //flex: 0 0;
-  }
-  .card > * + * {
-    padding: 0;
-  }
-
-  .wrapper {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-}
-
-@media all and (min-width: 1540px) {
-  .card {
-    padding: 20px 60px;
-    max-height: 147px;
-    cursor: pointer;
-  }
-  .card:hover, .card:focus-within {
-    outline: 1px solid #999;
-  }
+.buttonClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 11px;
+  background-color: #D9D9D9;
+  color: #666;
 }

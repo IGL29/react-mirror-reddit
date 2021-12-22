@@ -28,9 +28,11 @@ export default function DropDown({
         {button}
       </div>
       {isDropdownOpen && (
-        <div className={styles['dropdown__list-container']} onClick={() => setIsDropdownOpen(false)}>
-          {children}
-        </div>
+        <>
+          <div className={styles['dropdown__list-container']} onClick={() => setIsDropdownOpen(false)}>
+            {children}
+          </div>
+        </>
       )}
     </div>
   )

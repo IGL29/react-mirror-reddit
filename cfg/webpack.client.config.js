@@ -19,7 +19,7 @@ module.exports = {
 
   resolve: {
     plugins: [new TsconfigPathsWebpackPlugin()],
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', 'css'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', '.css', '.png'],
     alias: {
       'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
     }
@@ -39,7 +39,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g)$/i,
         use: [
           {
             loader: 'file-loader',

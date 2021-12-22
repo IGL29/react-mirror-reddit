@@ -1,28 +1,33 @@
+import React from "react";
+import {HideIcon, ShareIcon, SaveIcon, ComplainIcon, CommentsIcon} from '@Icons'
+
 export interface IMenuPostData {
-  icon: string;
+  Icon: React.ReactNode;
   text: string;
   className?: string;
 }
 
-export const menuPostData: IMenuPostData[] = [
+const menuPostData: IMenuPostData[] = [
   {
-    icon: '@img/comments-icon.svg',
+    Icon: CommentsIcon,
     text: 'Комментарии',
   },
   {
-    icon: '@img/share-icon.svg',
+    Icon: ShareIcon,
     text: 'Поделиться',
   },
   {
-    icon: '@img/hide-icon.svg',
+    Icon: HideIcon,
     text: 'Скрыть',
   },
   {
-    icon: '@img/save-icon.svg',
+    Icon: SaveIcon,
     text: 'Сохранить',
   },
   {
-    icon: '@img/complain-icon.svg',
+    Icon: ComplainIcon,
     text: 'Пожаловаться',
   },
 ];
+
+export {menuPostData};

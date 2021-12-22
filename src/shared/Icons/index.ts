@@ -1,0 +1,13 @@
+export {default as MenuIcon} from './MenuIcon';
+export {default as CommentsIcon} from './CommentsIcon';
+export {default as ComplainIcon} from './ComplainIcon';
+export {default as HideIcon} from './HideIcon';
+export {default as MessageIcon} from './MessageIcon';
+export {default as ShareIcon} from './ShareIcon';
+export {default as SearchIcon} from './SearchIcon';
+export {default as RocketIcon} from './RocketIcon';
+export {default as FireIcon} from './FireIcon';
+export {default as NewIcon} from './NewIcon';
+export {default as StarIcon} from './StarIcon';
+export {default as ArrowIcon} from './ArrowIcon';
+export {default as SaveIcon} from './SaveIcon';

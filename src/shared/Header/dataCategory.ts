@@ -1,23 +1,32 @@
-const dataCategory = [
+import React from 'react';
+import {RocketIcon, ArrowIcon, FireIcon, NewIcon, StarIcon} from '@Icons'
+
+export interface IDataCategory {
+  text: string;
+  Icon: React.ReactNode;
+  className?: string;
+}
+
+const dataCategory: IDataCategory[] = [
   {
     text: 'Лучшие',
-    icon: '@img/vector-1.svg',
+    Icon: RocketIcon,
   },
   {
     text: 'Жаркие',
-    icon: '@img/vector-2.svg',
+    Icon: FireIcon,
   },
   {
     text: 'Новые',
-    icon: '@img/vector-3.svg',
+    Icon: NewIcon,
   },
   {
     text: 'Топовые',
-    icon: '@img/vector-4.svg',
+    Icon: StarIcon,
   },
   {
     text: 'Длительные',
-    icon: '@img/vector-5.svg',
+    Icon: ArrowIcon,
   }
 ];
 
