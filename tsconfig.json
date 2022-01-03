@@ -68,7 +68,7 @@
         "src/utils/*"
       ],
       "@Icons": [
-        "src/shared/Icons/index.ts"
+        "src/shared/Icons/index.tsx"
       ]
     },
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */

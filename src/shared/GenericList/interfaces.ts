@@ -1,5 +1,5 @@
-import React from "react";
-
+import React from 'react';
+import { IIconProps } from '@Icons';
 export interface IItem {
   text: string;
   id: string;
@@ -7,7 +7,7 @@ export interface IItem {
   className?: string;
   As?: 'a' | 'li' | 'button' | 'div';
   href?: string;
-  Icon?: React.FC;
+  Icon?: React.FC<IIconProps>;
 }
 
 export interface IGenericListProps {
