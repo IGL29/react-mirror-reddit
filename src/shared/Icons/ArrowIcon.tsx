@@ -1,13 +1,13 @@
 // Vendor
 import React from 'react';
 // Internals
-import { IIconProps } from './interfaces';
+import { ISvgProps } from '@types';
 
-const ArrowIcon: React.FC<IIconProps> = ({ className }) => (
+const ArrowIcon: React.FC<ISvgProps> = ({ className, size }) => (
   <svg
     className={className}
-    width='16'
-    height='16'
+    width={size}
+    height={size}
     viewBox='0 0 16 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'

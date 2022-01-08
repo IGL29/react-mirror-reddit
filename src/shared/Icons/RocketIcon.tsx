@@ -1,14 +1,11 @@
 import React from 'react';
+import { ISvgProps } from '@types';
 
-interface IIconProps {
-  className?: string;
-}
-
-const RocketIcon: React.FC<IIconProps> = ({ className }): JSX.Element => (
+const RocketIcon: React.FC<ISvgProps> = ({ className, size }): JSX.Element => (
   <svg
     className={className}
-    width='14'
-    height='16'
+    width={size}
+    height={size}
     viewBox='0 0 14 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'

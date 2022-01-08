@@ -1,44 +1,28 @@
-import React from 'react';
-import {
-  // HideIcon,
-  // ShareIcon,
-  // SaveIcon,
-  // ComplainIcon,
-  // CommentsIcon,
-  Icons,
-  EComponents,
-} from '@shared/Icons';
-
+import { IIconsProps, EComponents } from '@shared/Icons';
 export interface IMenuPostData {
-  Icon: React.ReactElement;
+  icon?: IIconsProps;
   text: string;
-  className?: string;
 }
 
 const menuPostData: IMenuPostData[] = [
   {
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
-    // Icon: CommentsIcon,
+    icon: { name: EComponents.CommentsIcon, size: 16 },
     text: 'Комментарии',
   },
   {
-    // Icon: ShareIcon,
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
+    icon: { name: EComponents.ShareIcon, size: 16 },
     text: 'Поделиться',
   },
   {
-    // Icon: HideIcon,
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
+    icon: { name: EComponents.HideIcon, size: 16 },
     text: 'Скрыть',
   },
   {
-    // Icon: SaveIcon,
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
+    icon: { name: EComponents.SaveIcon, size: 16 },
     text: 'Сохранить',
   },
   {
-    // Icon: ComplainIcon,
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
+    icon: { name: EComponents.ComplainIcon, size: 16 },
     text: 'Пожаловаться',
   },
 ];

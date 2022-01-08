@@ -46,17 +46,6 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(png|jpg)$/i,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 8192,
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.[tj]sx?$/,
         use: ['ts-loader']

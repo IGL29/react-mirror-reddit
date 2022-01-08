@@ -1,37 +1,29 @@
-import React from 'react';
-import { Icons, EComponents } from '@Icons';
-
+import { EComponents, IIconsProps } from '@shared/Icons';
 export interface IDataCategory {
   text: string;
-  // Icon: React.FC;
-  Icon: React.ReactElement;
-  className?: string;
+  icon?: IIconsProps;
 }
 
 const dataCategory: IDataCategory[] = [
   {
     text: 'Лучшие',
-    Icon: <Icons name={EComponents['MenuIcon']} size={12} className='dsds' />,
+    icon: { name: EComponents.StarIcon, size: 16 },
   },
   {
     text: 'Жаркие',
-    Icon: <Icons name={EComponents['FireIcon']} size={12} className='dsds' />,
-    // Icon: FireIcon,
+    icon: { name: EComponents.FireIcon, size: 16 },
   },
   {
     text: 'Новые',
-    Icon: <Icons name={EComponents['NewIcon']} size={12} className='dsds' />,
-    // Icon: NewIcon,
+    icon: { name: EComponents.NewIcon, size: 16 },
   },
   {
     text: 'Топовые',
-    Icon: <Icons name={EComponents['StarIcon']} size={12} className='dsds' />,
-    // Icon: StarIcon,
+    icon: { name: EComponents.StarIcon, size: 16 },
   },
   {
     text: 'Длительные',
-    Icon: <Icons name={EComponents['ArrowIcon']} size={12} className='dsds' />,
-    // Icon: ArrowIcon,
+    icon: { name: EComponents.ArrowIcon, size: 16 },
   },
 ];
 

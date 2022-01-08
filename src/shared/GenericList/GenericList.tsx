@@ -2,6 +2,7 @@
 import React from 'react';
 // Internals
 import { IGenericListProps, IItem } from './interfaces';
+import { Icons } from '@Icons';
 
 const NOOP = () => {};
 
@@ -20,7 +21,7 @@ const GenericList: React.FC<IGenericListProps> = ({
           className,
           id,
           href,
-          Icon,
+          icon,
         }: IItem) => (
           <As
             className={className}
@@ -28,7 +29,13 @@ const GenericList: React.FC<IGenericListProps> = ({
             key={id}
             href={href}
           >
-            {Icon && <Icon />}
+            {icon && (
+              <Icons
+                name={icon.name}
+                className={icon.className}
+                size={icon.size}
+              />
+            )}
             <p style={{ margin: 0, marginLeft: '5px' }}>{text}</p>
           </As>
         )

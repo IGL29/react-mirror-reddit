@@ -64,11 +64,14 @@
       "@img/*": [
         "public/images/*"
       ],
+      "@types": [
+        "src/shared/types/index.ts"
+      ],
       "@utils/*": [
         "src/utils/*"
       ],
       "@Icons": [
-        "src/shared/Icons/index.tsx"
+        "src/shared/Icons/"
       ]
     },
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
