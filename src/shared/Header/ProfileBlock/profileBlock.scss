@@ -1,6 +1,19 @@
-.button{
+$orange: #CC6633;
+
+.button {
   display: flex;
   align-items: center;
+
+  &:hover {
+    & .text {
+      color: $orange;
+    }
+
+    & .avatar {
+      border: 2px solid $orange;
+      border-radius: 50%;
+    }
+  }
 }
 
 .img {

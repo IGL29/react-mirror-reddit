@@ -14,6 +14,7 @@ import { default as NewIcon } from './NewIcon';
 import { default as StarIcon } from './StarIcon';
 import { default as ArrowIcon } from './ArrowIcon';
 import { default as SaveIcon } from './SaveIcon';
+import { default as AvatarIcon } from './AvatarIcon';
 // Interface
 import { ISvgProps } from '@types';
 
@@ -35,6 +36,7 @@ enum EComponents {
   StarIcon = 'StarIcon',
   ArrowIcon = 'ArrowIcon',
   SaveIcon = 'SaveIcon',
+  AvatarIcon = 'AvatarIcon'
 }
 
 const Icons: React.FC<IIconsProps> = ({ name, size, className }) => {
@@ -65,6 +67,8 @@ const Icons: React.FC<IIconsProps> = ({ name, size, className }) => {
       return <ArrowIcon size={size} className={className} />;
     case EComponents.SaveIcon:
       return <SaveIcon size={size} className={className} />;
+    case EComponents.AvatarIcon:
+      return <AvatarIcon size={size} className={className} />;
     default:
       return <ArrowIcon size={size} className={className} />;
   }

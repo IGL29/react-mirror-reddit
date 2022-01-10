@@ -1,6 +1,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const NODE_ENV = process.env.NODE_ENV;
 const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
@@ -66,4 +67,5 @@ module.exports = {
       }
     ]
   },
+  plugins: [new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` })]
 };
