@@ -1,43 +1,44 @@
 // Vendors
-import {hot} from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 // Internals
-import {IHeaderProps} from './interfaces';
-import {SearchBlock} from './SearchBlock';
-import {MessageBlock} from './MessageBlock';
-import {ProfileBlock} from './ProfileBlock';
-import {DropDown} from "@shared/DropDown";
-import {GenericList} from "@shared/GenericList";
-import {generateId} from "@utils/react/generateRandomIndex";
-import {dataCategory} from './dataCategory';
+import { IHeaderProps } from './interfaces';
+import { SearchBlock } from './SearchBlock';
+import { MessageBlock } from './MessageBlock';
+import { ProfileBlock } from './ProfileBlock';
+import { DropDown } from '@shared/DropDown';
+import { GenericList } from '@shared/GenericList';
+import { generateId } from '@utils/react/generateRandomIndex';
+import { dataCategory } from './dataCategory';
 import styles from './header.scss';
 
 const dataCategoryWithId = dataCategory.map((item) => ({
   ...generateId(item),
   As: 'button' as 'button',
   className: styles.itemList,
-}))
+}));
 
-function Header({title}: IHeaderProps): JSX.Element {
+function Header({ token, title }: IHeaderProps): JSX.Element {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h1 className={styles['thread-title']}>
-          {title}
-        </h1>
+        <h1 className={styles['thread-title']}>{title}</h1>
 
         <div className={styles.wrapDropdown}>
-        <DropDown button={
-          <button className={styles.dropDownButton}>Лучшие</button>
-        }>
-          <GenericList list={dataCategoryWithId} className={styles.containerList}/>
-        </DropDown>
+          <DropDown
+            button={<button className={styles.dropDownButton}>Лучшие</button>}
+          >
+            <GenericList
+              list={dataCategoryWithId}
+              className={styles.containerList}
+            />
+          </DropDown>
         </div>
 
         <div className={styles.wrapper}>
-          <MessageBlock className={styles.headerMessage}/>
-          <SearchBlock className={styles.headerSearch}/>
-          <ProfileBlock className={styles.headerProfile}/>
+          <MessageBlock className={styles.headerMessage} />
+          <SearchBlock className={styles.headerSearch} />
+          <ProfileBlock token={token} className={styles.headerProfile} />
         </div>
       </div>
     </header>
