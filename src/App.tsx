@@ -2,7 +2,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 // Internals
+import { tokenContext } from './shared/context/tokenContext';
+import { UserContextProvider } from './shared/context/userContext';
 import { useToken } from '../src/hooks';
+import { PostContextProvider } from '@shared/context/postsContext';
 import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
 import { Content } from './shared/Content';
@@ -15,18 +18,24 @@ function AppComponent(): JSX.Element {
   const [token] = useToken();
 
   return (
-    <Layout>
-      <Header token={token} title='Личный кабинет' />
+    <tokenContext.Provider value={token}>
+      <UserContextProvider>
+      <Layout>
+        <Header title='Личный кабинет' />
 
-      <SortBlock />
+        <SortBlock />
 
-      <Container>
-        <Content>
-          <CardList />
-        </Content>
-      </Container>
-    </Layout>
+        <Container>
+          <Content>
+            <PostContextProvider>
+              <CardList />
+            </PostContextProvider>
+          </Content>
+        </Container>
+      </Layout>
+      </UserContextProvider>
+    </tokenContext.Provider>
   );
 }
 
-export const App = hot(AppComponent);
+export const App = hot(() => <AppComponent />);

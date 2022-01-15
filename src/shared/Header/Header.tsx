@@ -1,6 +1,6 @@
 // Vendors
 import { hot } from 'react-hot-loader/root';
-import React from 'react';
+import React, { useContext } from 'react';
 // Internals
 import { IHeaderProps } from './interfaces';
 import { SearchBlock } from './SearchBlock';
@@ -11,6 +11,7 @@ import { GenericList } from '@shared/GenericList';
 import { generateId } from '@utils/react/generateRandomIndex';
 import { dataCategory } from './dataCategory';
 import styles from './header.scss';
+// import { tokenContext } from '../context/tokenContext';
 
 const dataCategoryWithId = dataCategory.map((item) => ({
   ...generateId(item),
@@ -18,7 +19,7 @@ const dataCategoryWithId = dataCategory.map((item) => ({
   className: styles.itemList,
 }));
 
-function Header({ token, title }: IHeaderProps): JSX.Element {
+function Header({ title }: IHeaderProps): JSX.Element {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -38,7 +39,10 @@ function Header({ token, title }: IHeaderProps): JSX.Element {
         <div className={styles.wrapper}>
           <MessageBlock className={styles.headerMessage} />
           <SearchBlock className={styles.headerSearch} />
-          <ProfileBlock token={token} className={styles.headerProfile} />
+          {/* <Consumer>
+            {(token) => <ProfileBlock token={token} className={styles.headerProfile} />}
+          </Consumer> */}
+          <ProfileBlock className={styles.headerProfile} />
         </div>
       </div>
     </header>
