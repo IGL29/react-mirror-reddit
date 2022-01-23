@@ -17,6 +17,8 @@ import './styles/main.global.scss';
 function AppComponent(): JSX.Element {
   const [token] = useToken();
 
+  console.log(process.env.CLIENT_ID)
+
   return (
     <tokenContext.Provider value={token}>
       <UserContextProvider>
