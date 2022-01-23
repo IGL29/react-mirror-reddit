@@ -7,11 +7,15 @@ import {ShareButton} from './ShareButton';
 import {SaveButton} from './SaveButton';
 import styles from './controls.scss';
 
-export default function ControlsButton() {
+interface IControlsButtonProps {
+  countComments: number
+}
+
+export default function ControlsButton({countComments}: IControlsButtonProps) {
   return (
     <div className={styles.controls}>
       <KarmaCounter/>
-      <CommentsButton/>
+      <CommentsButton countComments={countComments} />
 
       <div className={styles.actions}>
         <ShareButton/>

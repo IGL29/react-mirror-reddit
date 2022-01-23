@@ -4,18 +4,18 @@ import React from 'react';
 import user from './username.scss';
 import textcontent from './textContent.scss';
 
-export default function MetaData() {
+export default function MetaData({author, created}) {
   return (
     <div className={textcontent.metaData}>
       <div className={user.userLink}>
         <img
           className={user.avatar}
           src="https://pixelbox.ru/wp-content/uploads/2021/05/ava-vk-animal-91.jpg"
-          alt="Константин Кодов"
+          alt={author}
         />
         <a
           className={user.username}
-          href="#user">Константин Кодов
+          href="#user">{author}
         </a>
       </div>
 
@@ -23,7 +23,9 @@ export default function MetaData() {
         <span className={textcontent.publishedLabel}>
           опубликовано
         </span>
-          8 часов назад
+        <span>
+          {created} часов назад
+        </span>
       </span>
     </div>
   )

@@ -3,7 +3,11 @@ import React from 'react';
 // Internals
 import styles from './commentsButton.scss';
 
-export default function CommentsButton(): JSX.Element {
+interface ICommentsButtonProps {
+  countComments: number
+}
+
+export default function CommentsButton ({countComments}: ICommentsButtonProps) {
   return (
     <button className={styles.commentsButton}>
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +16,7 @@ export default function CommentsButton(): JSX.Element {
           fill="#C4C4C4"/>
       </svg>
 
-      <span className={styles.commentsNumber}>13</span>
+      <span className={styles.commentsNumber}>{countComments}</span>
     </button>
   )
 }

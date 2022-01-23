@@ -7,16 +7,20 @@ import styles from './title.scss';
 
 interface ITextContentProps {
   className?: string;
+  author: string
+  url: string
+  title: string
+  created: string
 }
 
-export default function TextContent({className = ''}: ITextContentProps): JSX.Element {
+export default function TextContent({className = '', author, url, title, created}: ITextContentProps): JSX.Element {
   return (
     <div className={cn(styles['text-content'], className)}>
-      <MetaData/>
+      <MetaData created={created} author={author}/>
 
       <h2 className={styles.title}>
-        <a href="#article" className={styles.postLink}>
-          Реплицированные с зарубежных источников возможности
+        <a href={url} className={styles.postLink}>
+          {title}
         </a>
       </h2>
     </div>
