@@ -18,7 +18,27 @@ const menuPostDataWithID = menuPostData.map((item) => ({
   className: styles.item,
 }));
 
-export default function Card({data}): React.ReactElement {
+interface IData {
+  data: {
+    title: string
+    author: string
+    created: string
+    url: string
+    preview: {
+      images: [
+        {source:
+          {url: string}
+        }
+      ]
+    }
+    num_comments: number
+  }
+}
+interface ICardProps {
+  data: IData
+}
+
+export default function Card({data}: ICardProps): React.ReactElement {
   return (
     <li className={styles.card}>
       {console.log('URL: ',data?.data)}

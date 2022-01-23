@@ -4,7 +4,7 @@ import React from 'react';
 import user from './username.scss';
 import textcontent from './textContent.scss';
 
-export default function MetaData({author, created}) {
+export default function MetaData({author = '', created = {}}) {
   return (
     <div className={textcontent.metaData}>
       <div className={user.userLink}>
