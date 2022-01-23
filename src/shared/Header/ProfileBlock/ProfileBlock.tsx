@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
 import styles from './profileBlock.scss';
 import { Icons, EComponents } from '@shared/Icons';
-
+import { userContext } from '@shared/context/userContext';
 interface IProfileBlockProps {
   className: string;
-  userName?: string;
-  avatarSrc?: string;
 }
 
 const ID = process.env.CLIENT_ID;
+const link = `https://www.reddit.com/api/v1/authorize?client_id=${ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity`
 
 export default function ProfileBlock({
   className,
-  userName,
-  avatarSrc,
 }: IProfileBlockProps): JSX.Element {
+  const { iconImg, name } = useContext(userContext);
+
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity`}
+      href={link}
       className={cn(styles.button, className)}
     >
-      {avatarSrc ? (
-        <img className={styles.avatar} src={avatarSrc} alt={userName} />
+      {iconImg ? (
+        <img className={styles.avatar} src={iconImg} alt={name} />
       ) : (
         <Icons
           name={EComponents.AvatarIcon}
@@ -30,7 +29,7 @@ export default function ProfileBlock({
         />
       )}
 
-      <p className={styles.text}>{userName || 'Аноним'}</p>
+      <p className={styles.text}>{name || 'Аноним'}</p>
     </a>
   );
 }

@@ -1,5 +1,5 @@
 // Vendor
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 // internals
 import { MenuButton } from './MenuButton';
 import { menuPostData } from './menuPostData';
@@ -10,6 +10,7 @@ import { DropDown } from '@shared/DropDown';
 import { generateId } from '@utils/react/generateRandomIndex';
 import { GenericList } from '@shared/GenericList';
 import styles from './card.scss';
+import noImg from '../../../../public/images/no_image.jpg';
 
 const menuPostDataWithID = menuPostData.map((item) => ({
   ...generateId(item),
@@ -17,18 +18,19 @@ const menuPostDataWithID = menuPostData.map((item) => ({
   className: styles.item,
 }));
 
-export default function Card(): React.ReactElement {
+export default function Card({data}): React.ReactElement {
   return (
     <li className={styles.card}>
+      {console.log('URL: ',data?.data)}
       <div className={styles.wrapper}>
         <div className={styles.imgWrapper}>
           <img
             className={styles.previewImg}
-            src='https://luchanka.com.ua/wp-content/uploads/2017/07/christmas-fun-1000x600.jpg'
+            src={data?.data?.preview?.images[0]?.source?.url || noImg}
             alt=''
           />
         </div>
-        <TextContent />
+        <TextContent url={data?.data?.url} created={data?.data?.created} author={data?.data?.author} title={data?.data?.title} />
       </div>
 
       <div className={styles.wrapButtons}>
@@ -38,7 +40,7 @@ export default function Card(): React.ReactElement {
             <button className={styles.buttonClose}>Закрыть</button>
           </div>
         </DropDown>
-        <ControlsButtons />
+        <ControlsButtons countComments={data?.data?.num_comments}/>
       </div>
     </li>
   );
