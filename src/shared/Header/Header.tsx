@@ -1,6 +1,7 @@
 // Vendors
 import { hot } from 'react-hot-loader/root';
 import React, { useContext } from 'react';
+import ReactDOM from 'react-dom';
 // Internals
 import { IHeaderProps } from './interfaces';
 import { SearchBlock } from './SearchBlock';
@@ -20,6 +21,9 @@ const dataCategoryWithId = dataCategory.map((item) => ({
 }));
 
 function Header({ title }: IHeaderProps): JSX.Element {
+
+  const node = document.querySelector('#dropdown_root');
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>

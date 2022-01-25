@@ -13,29 +13,31 @@ import { CardList } from './shared/CardsList';
 import { Container } from './shared/Container';
 import { SortBlock } from './shared/Header/SortBlock';
 import './styles/main.global.scss';
+import { CommentProvider } from '@shared/context/commentContext';
 
 function AppComponent(): JSX.Element {
   const [token] = useToken();
 
-  console.log(process.env.CLIENT_ID)
-
   return (
     <tokenContext.Provider value={token}>
-      <UserContextProvider>
-      <Layout>
-        <Header title='Личный кабинет' />
+      <CommentProvider>
+        <UserContextProvider>
+          <Layout>
+            <Header title='Личный кабинет' />
 
-        <SortBlock />
+            <SortBlock />
 
-        <Container>
-          <Content>
-            <PostContextProvider>
-              <CardList />
-            </PostContextProvider>
-          </Content>
-        </Container>
-      </Layout>
-      </UserContextProvider>
+            <Container>
+              <Content>
+                <PostContextProvider>
+                  <CardList />
+                </PostContextProvider>
+              </Content>
+            </Container>
+          </Layout>
+        </UserContextProvider>
+      </CommentProvider>
+
     </tokenContext.Provider>
   );
 }

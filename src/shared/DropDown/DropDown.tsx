@@ -1,20 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {IDropdownProps} from './interfaces';
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { IDropdownProps } from './interfaces';
 import styles from './dropDown.scss';
 
 const NOOP = () => {
 };
 
-export default function DropDown({
-                                   button,
-                                   children,
-                                   isOpen,
-                                   onOpen = NOOP,
-                                   onClose = NOOP
-                                 }: IDropdownProps): JSX.Element {
+const DropDown: React.FC<IDropdownProps> = ({
+  button,
+  children,
+  isOpen,
+  onOpen = NOOP,
+  onClose = NOOP
+}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
   useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
   useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
+
+  // const node = document.getElementById('dropdown_root');
+
+  // if (!node) return null
 
   const handleOpen = () => {
     if (isOpen === undefined) {
@@ -22,8 +27,8 @@ export default function DropDown({
     }
   }
 
-  return (
-    <div className={styles.dropdown}>
+  // return ReactDOM.createPortal((
+   return <div className={styles.dropdown}>
       <div onClick={handleOpen}>
         {button}
       </div>
@@ -35,5 +40,7 @@ export default function DropDown({
         </>
       )}
     </div>
-  )
+  // ), node)
 }
+
+export default DropDown;
