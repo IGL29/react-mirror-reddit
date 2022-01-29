@@ -1,11 +1,51 @@
 .button {
+  padding: 17px 50px;
+  font-size: 14px;
+  background-color: #CC6633;
+  color: #FFF
+}
 
+.containerButtons {
+  display: flex;
+}
+
+.wrapButtons {
+  width: 100%;
+  min-height: 51px;
+  background-color: #E5E5E5;
+}
+
+.wrapTextarea {
+  position: relative;
+  width: 100%;
+  height: 89px;
 }
 
 .textaria {
+  width: 100%;
+  height: 100%;
+  padding: 16px 18px;
+  border: 1px solid #E5E5E5;
+  resize: none;
 
+  &:focus {
+    outline: 1px solid #CC6633;
+  }
 }
 
 .form {
+  line-height: 0;
+}
 
+.placeholder {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  margin: 0;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.userPlaceholder {
+  color: #CC6633;
 }

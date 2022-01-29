@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { IDropdownProps } from './interfaces';
 import styles from './dropDown.scss';
+import { node } from 'webpack';
 
 const NOOP = () => {
 };
@@ -17,9 +18,13 @@ const DropDown: React.FC<IDropdownProps> = ({
   useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
   useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
 
-  // const node = document.getElementById('dropdown_root');
+  const [node, setNode] = useState<Element | null>(null);
 
-  // if (!node) return null
+  useEffect(() => {
+    setNode(document.querySelector('#dropdown_root'))
+  }, [])
+
+  if (!node) return null
 
   const handleOpen = () => {
     if (isOpen === undefined) {
@@ -27,20 +32,20 @@ const DropDown: React.FC<IDropdownProps> = ({
     }
   }
 
-  // return ReactDOM.createPortal((
-   return <div className={styles.dropdown}>
-      <div onClick={handleOpen}>
-        {button}
+  return ReactDOM.createPortal((
+    <div className={styles.dropdown}>
+        <div onClick={handleOpen}>
+          {button}
+        </div>
+        {isDropdownOpen && (
+          <>
+            <div className={styles['dropdown__list-container']} onClick={() => setIsDropdownOpen(false)}>
+              {children}
+            </div>
+          </>
+        )}
       </div>
-      {isDropdownOpen && (
-        <>
-          <div className={styles['dropdown__list-container']} onClick={() => setIsDropdownOpen(false)}>
-            {children}
-          </div>
-        </>
-      )}
-    </div>
-  // ), node)
+  ), node)
 }
 
 export default DropDown;

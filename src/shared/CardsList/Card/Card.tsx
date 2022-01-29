@@ -32,6 +32,7 @@ interface IData {
       ]
     }
     num_comments: number
+    id: string
   }
 }
 interface ICardProps {
@@ -39,9 +40,9 @@ interface ICardProps {
 }
 
 export default function Card({data}: ICardProps): React.ReactElement {
+
   return (
     <li className={styles.card}>
-      {console.log('URL: ',data?.data)}
       <div className={styles.wrapper}>
         <div className={styles.imgWrapper}>
           <img
@@ -50,7 +51,7 @@ export default function Card({data}: ICardProps): React.ReactElement {
             alt=''
           />
         </div>
-        <TextContent url={data?.data?.url} created={data?.data?.created} author={data?.data?.author} title={data?.data?.title} />
+        <TextContent permalinkComments={data?.data?.id} url={data?.data?.url} created={data?.data?.created} author={data?.data?.author} title={data?.data?.title} />
       </div>
 
       <div className={styles.wrapButtons}>

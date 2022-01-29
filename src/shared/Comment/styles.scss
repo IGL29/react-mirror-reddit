@@ -1,0 +1,53 @@
+.comment {
+  padding-left: 30px;
+  &:not(:last-of-type) {
+    margin-bottom: 30px;
+  }
+  border-left: 3px solid #D9D9D9;
+}
+
+.name {
+  font-size: 14px;
+  color: #CC6633;
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.time {
+  font-size: 14px;
+  color: #999999;
+  margin: 0;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wrapBtn {
+  display: flex;
+}
+
+.btn {
+  color: #999999;
+  &:not(:last-of-type) {
+    margin-right: 27px;
+  }
+}
+
+.textarea {
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  resize: none;
+  height: 70px;
+}
+
+.sendBtn {
+  padding: 10px 20px;
+  background-color: #CC6633;
+  color: #FFF;
+}
