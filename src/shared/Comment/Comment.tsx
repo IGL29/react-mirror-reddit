@@ -1,19 +1,28 @@
-import React, {createRef, useState, useEffect} from 'react';
+import React, {createRef, useState, useEffect, FormEvent} from 'react';
 import styles from './styles.scss';
 
-const Comment = ({data}) => {
-  const [isOpenForm, setIsOpenForm] = useState(false);
-  const refTextarea = createRef();
+interface IData {
+  author: string
+  created: number
+  body: string
+}
+interface ICommentProps {
+  data: IData
+}
 
-  const handleSubmit = (event: SubmitEvent) => {
+const Comment: React.FC<ICommentProps> = ({data}) => {
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const refTextarea = createRef<HTMLTextAreaElement>();
+
+  const handleSubmit = (event: FormEvent & {target: HTMLInputElement[]}) => {
     event.preventDefault();
-    const value = event.target[0].value;
+    const value = (event.target as HTMLInputElement[])[0].value;
     console.log('uncontrolled value :', value);
     setIsOpenForm(false);
   }
 
   useEffect(() => {
-    if(isOpenForm === true) {
+    if(isOpenForm === true && refTextarea.current) {
       refTextarea.current.focus();
       refTextarea.current.selectionStart = refTextarea.current.value.length;
     }

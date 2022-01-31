@@ -1,5 +1,5 @@
 // Vendor
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, createRef} from 'react';
 // internals
 import { MenuButton } from './MenuButton';
 import { menuPostData } from './menuPostData';
@@ -41,6 +41,15 @@ interface ICardProps {
 
 export default function Card({data}: ICardProps): React.ReactElement {
 
+  const refDropdown = createRef<HTMLDivElement>();
+  const [coordinate, setCoordinate] = useState({top: 0, left: 0})
+
+  useEffect(() => {
+    if (refDropdown.current === null) return;
+    const boundingClientRect = refDropdown.current.getBoundingClientRect();
+    setCoordinate({top: boundingClientRect.top + scrollY, left:  boundingClientRect.left + scrollX})
+  }, [refDropdown.current])
+
   return (
     <li className={styles.card}>
       <div className={styles.wrapper}>
@@ -55,7 +64,9 @@ export default function Card({data}: ICardProps): React.ReactElement {
       </div>
 
       <div className={styles.wrapButtons}>
-        <DropDown button={<MenuButton />}>
+        <div className={styles.dropdown} ref={refDropdown} />
+
+        <DropDown button={<MenuButton />} position={coordinate}>
           <div className={styles['dropdown-content-wrapper']}>
             <GenericList list={menuPostDataWithID} className={styles['list']} />
             <button className={styles.buttonClose}>Закрыть</button>

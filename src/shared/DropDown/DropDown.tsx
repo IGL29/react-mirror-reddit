@@ -12,7 +12,8 @@ const DropDown: React.FC<IDropdownProps> = ({
   children,
   isOpen,
   onOpen = NOOP,
-  onClose = NOOP
+  onClose = NOOP,
+  position = {top: 0, left: 0},
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
   useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
@@ -33,7 +34,7 @@ const DropDown: React.FC<IDropdownProps> = ({
   }
 
   return ReactDOM.createPortal((
-    <div className={styles.dropdown}>
+    <div className={styles.dropdown} style={{top: `${position.top}px`, left: `${position.left}px`, position: 'absolute'}}>
         <div onClick={handleOpen}>
           {button}
         </div>

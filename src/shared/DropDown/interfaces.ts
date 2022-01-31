@@ -4,4 +4,5 @@ export interface IDropdownProps {
   isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  position?: {top: number, left: number}
 }

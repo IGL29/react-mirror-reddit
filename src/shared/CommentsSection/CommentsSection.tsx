@@ -8,6 +8,14 @@ import { ControlledComment } from '@shared/ControlledComment';
 import styles from './styles.scss'
 import { useComments } from '../../hooks/useComments';
 
+interface ICommentData {
+  data: {
+    author: string
+    created: number
+    body: string
+  }
+}
+
 const CommentsSection = ({permalinkComments}: {permalinkComments: string}) => {
   const [commentsData] = useComments(permalinkComments)
 
@@ -23,7 +31,7 @@ const CommentsSection = ({permalinkComments}: {permalinkComments: string}) => {
 
       {/* // Controlled */}
 
-      {commentsData ? commentsData?.[1]?.data?.children.map((commentData) => <ControlledComment data={commentData.data} /> ): <p className={styles.loader}>Загружаем...</p>}
+      {commentsData ? commentsData[1]?.data?.children.map((commentData: ICommentData, index: number) => <ControlledComment key={index} data={commentData.data} /> ): <p className={styles.loader}>Загружаем...</p>}
     </div>
   )
 }
