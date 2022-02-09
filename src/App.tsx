@@ -2,9 +2,8 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 // Internals
-import { tokenContext } from './shared/context/tokenContext';
+import { TokenContextProvider } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/userContext';
-import { useToken } from '../src/hooks';
 import { PostContextProvider } from '@shared/context/postsContext';
 import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
@@ -14,31 +13,36 @@ import { Container } from './shared/Container';
 import { SortBlock } from './shared/Header/SortBlock';
 import './styles/main.global.scss';
 import { CommentProvider } from '@shared/context/commentContext';
+import { createStore } from 'redux';
+// import { Provider } from 'react-redux';
+// import { devToolsEnhancer  } from '@redux-devtools/extension';
+
+// const store = createStore(() => {});
 
 function AppComponent(): JSX.Element {
-  const [token] = useToken();
 
   return (
-    <tokenContext.Provider value={token}>
-      <CommentProvider>
-        <UserContextProvider>
-          <Layout>
-            <Header title='Личный кабинет' />
+    // <Provider store={store}>
+      <TokenContextProvider>
+        <CommentProvider>
+          <UserContextProvider>
+            <Layout>
+              <Header title='Личный кабинет' />
 
-            <SortBlock />
+              <SortBlock />
 
-            <Container>
-              <Content>
-                <PostContextProvider>
-                  <CardList />
-                </PostContextProvider>
-              </Content>
-            </Container>
-          </Layout>
-        </UserContextProvider>
-      </CommentProvider>
-
-    </tokenContext.Provider>
+              <Container>
+                <Content>
+                  <PostContextProvider>
+                    <CardList />
+                  </PostContextProvider>
+                </Content>
+              </Container>
+            </Layout>
+          </UserContextProvider>
+        </CommentProvider>
+      </TokenContextProvider>
+    // </Provider>
   );
 }
 
