@@ -17,7 +17,7 @@ import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
 // import { devToolsEnhancer  } from '@redux-devtools/extension';
 
-// const store = createStore(() => {});
+const store = createStore(() => {});
 
 function AppComponent(): JSX.Element {
 
