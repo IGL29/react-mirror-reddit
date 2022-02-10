@@ -14,9 +14,9 @@ const Comment: React.FC<ICommentProps> = ({data}) => {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const refTextarea = createRef<HTMLTextAreaElement>();
 
-  const handleSubmit = (event: FormEvent & {target: HTMLInputElement[]}) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const value = (event.target as HTMLInputElement[])[0].value;
+    const value = (event.currentTarget.elements[0] as HTMLInputElement).value;
     console.log('uncontrolled value :', value);
     setIsOpenForm(false);
   }
