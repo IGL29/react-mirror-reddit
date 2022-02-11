@@ -1,39 +1,25 @@
-import { commentContext } from '@shared/context/commentContext';
-import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
-import { userContext } from '@shared/context/userContext';
+import React, {ChangeEvent, FormEvent} from 'react';
 import styles from './styles.scss';
 
 interface CommentFormProps {
   className: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onBlur: (event: FormEvent) => void;
+  onSubmit: () => void;
+  isFocus: boolean;
+  name: string;
+  setIsFocus: (arg0: boolean) => void;
+  ref: React.Ref<HTMLTextAreaElement>
 }
 
-const CommentForm: React.FC<CommentFormProps> = ({className}) => {
-  const { value, onChange } = useContext(commentContext);
-  const [isFocus, setIsFocus] = useState<boolean>(false);
-  const refTextaria = useRef(null);
-  const { name } = useContext(userContext);
-
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-  }
-
-  function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    onChange(event.target.value);
-  }
-
-  function handleOnBlur() {
-    const textareaElement: HTMLTextAreaElement | null = refTextaria.current;
-
-    if(textareaElement?.value === '') {
-      setIsFocus(false)
-    }
-  }
+const CommentForm: React.FC<CommentFormProps> = ({className, setIsFocus, value, onChange, onBlur, onSubmit, isFocus, name, ref}) => {
 
   return (
-  <form className={`${styles.form} ${className}`} onSubmit={handleSubmit}>
+  <form className={`${styles.form} ${className}`} onSubmit={onSubmit}>
 
     <div className={styles.wrapTextarea}>
-      <textarea ref={refTextaria} onFocus={() => setIsFocus(true)} onBlur={handleOnBlur} className={styles.textaria} value={value}  onChange={handleChange}/>
+      <textarea ref={ref} onFocus={() => setIsFocus(true)} onBlur={onBlur} className={styles.textaria} value={value}  onChange={onChange}/>
 
       {!isFocus && <p className={styles.placeholder}><span className={styles.userPlaceholder}>{name}</span>, оставьте ваш комментарий</p>}
     </div>

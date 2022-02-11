@@ -1,11 +1,12 @@
-import React, {useState, useEffect, useContext} from 'react';
+import { RootState } from 'src/store';
+import { useSelector, useDispatch } from 'react-redux';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
-import { tokenContext } from './../shared/context/tokenContext';
 
 const useComments = (permalink: string) => {
   console.log('id', permalink)
   const [data, setData] = useState(null);
-  const token = useContext(tokenContext);
+  const token = useSelector<RootState>(store => store.token);
 
   useEffect(() => {
     axios
@@ -14,7 +15,7 @@ const useComments = (permalink: string) => {
       })
       .then((res) => setData(res.data))
       .catch(console.log)
-  }, [token])
+    }, [token])
 
   return [data];
 }

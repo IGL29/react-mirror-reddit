@@ -1,8 +1,6 @@
 // Vendor
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import React, { useEffect } from 'react';
 // Internals
-import { TokenContextProvider } from './shared/context/tokenContext';
 import { UserContextProvider } from './shared/context/userContext';
 import { PostContextProvider } from '@shared/context/postsContext';
 import { Layout } from './shared/Layout';
@@ -11,39 +9,37 @@ import { Content } from './shared/Content';
 import { CardList } from './shared/CardsList';
 import { Container } from './shared/Container';
 import { SortBlock } from './shared/Header/SortBlock';
-import './styles/main.global.scss';
-import { CommentProvider } from '@shared/context/commentContext';
-import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
-// import { devToolsEnhancer  } from '@redux-devtools/extension';
+import { Action, ActionCreator, createStore } from 'redux';
+import { useDispatch } from 'react-redux';
+import { devToolsEnhancer } from '@redux-devtools/extension';
 
-const store = createStore(() => {});
+import { useToken } from '../src/hooks';
+import { setToken } from './store';
+import './styles/main.global.scss';
 
 function AppComponent(): JSX.Element {
+  const dispatch = useDispatch();
+  const [token] = useToken();
+
+  useEffect(() => dispatch(setToken(token)), [token])
 
   return (
-    // <Provider store={store}>
-      <TokenContextProvider>
-        <CommentProvider>
-          <UserContextProvider>
-            <Layout>
-              <Header title='Личный кабинет' />
+      <UserContextProvider>
+        <Layout>
+          <Header title='Личный кабинет' />
 
-              <SortBlock />
+          <SortBlock />
 
-              <Container>
-                <Content>
-                  <PostContextProvider>
-                    <CardList />
-                  </PostContextProvider>
-                </Content>
-              </Container>
-            </Layout>
-          </UserContextProvider>
-        </CommentProvider>
-      </TokenContextProvider>
-    // </Provider>
+          <Container>
+            <Content>
+              <PostContextProvider>
+                <CardList />
+              </PostContextProvider>
+            </Content>
+          </Container>
+        </Layout>
+      </UserContextProvider>
   );
 }
 
-export const App = hot(() => <AppComponent />);
+export {AppComponent};
