@@ -1,4 +1,4 @@
-import { RootState } from 'src/store';
+import { RootState } from 'src/store/reducer';
 import { useSelector, useDispatch } from 'react-redux';
 import {useState, useEffect} from 'react';
 import axios from 'axios';

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import cn from 'classnames';
 import styles from './profileBlock.scss';
 import { Icons, EComponents } from '@shared/Icons';
-import { userContext } from '@shared/context/userContext';
+import { useUserData } from '../../../hooks';
 interface IProfileBlockProps {
   className: string;
 }
@@ -13,13 +13,17 @@ const link = `https://www.reddit.com/api/v1/authorize?client_id=${ID}&response_t
 export default function ProfileBlock({
   className,
 }: IProfileBlockProps): JSX.Element {
-  const { iconImg, name } = useContext(userContext);
+  const {data, loading} = useUserData();
+  console.log('data', data)
+  const { iconImg, name } = data;
 
   return (
     <a
       href={link}
       className={cn(styles.button, className)}
     >
+      {loading && 'Загрузка'}
+
       {iconImg ? (
         <img className={styles.avatar} src={iconImg} alt={name} />
       ) : (

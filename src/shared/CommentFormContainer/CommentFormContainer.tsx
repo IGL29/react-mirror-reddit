@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from 'react';
 import { userContext } from '@shared/context/userContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, updateComment } from 'src/store';
+import { RootState, updateComment } from '../../store/reducer';
 import { CommentForm } from '../CommentForm';
 
 interface ContainerCommentFormProps {

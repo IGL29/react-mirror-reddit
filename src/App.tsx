@@ -9,19 +9,18 @@ import { Content } from './shared/Content';
 import { CardList } from './shared/CardsList';
 import { Container } from './shared/Container';
 import { SortBlock } from './shared/Header/SortBlock';
-import { Action, ActionCreator, createStore } from 'redux';
 import { useDispatch } from 'react-redux';
-import { devToolsEnhancer } from '@redux-devtools/extension';
-
 import { useToken } from '../src/hooks';
-import { setToken } from './store';
+import { setToken } from './store/reducer';
 import './styles/main.global.scss';
 
 function AppComponent(): JSX.Element {
   const dispatch = useDispatch();
   const [token] = useToken();
 
-  useEffect(() => dispatch(setToken(token)), [token])
+  useEffect(() => {
+    dispatch(setToken(token))
+  }, [token])
 
   return (
       <UserContextProvider>
