@@ -14,7 +14,6 @@ export default function ProfileBlock({
   className,
 }: IProfileBlockProps): JSX.Element {
   const {data, loading} = useUserData();
-  console.log('data', data)
   const { iconImg, name } = data;
 
   return (
