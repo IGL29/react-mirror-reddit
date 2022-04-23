@@ -24,11 +24,27 @@ interface IData {
 }
 
 export default function CardList(): React.ReactElement {
-  const dataCards = useContext(postsContext);
+  const {data, isLoading, errorLoading, bottomOfList,  setIsLoadMoreCards, isLoadMoreCards} = useContext(postsContext);
 
   return (
     <ul className={styles['cards-list']}>
-      {dataCards.map((data: IData) => <Card key={data?.data?.id} data={data} />)}
+      {data.length === 0 && !isLoading && !errorLoading && (
+        <div>Нет ни одного поста</div>
+      )}
+
+      {data.map((data: IData) => <Card key={data?.data?.id} data={data} />)}
+
+      <div ref={bottomOfList}/>
+
+      {isLoading && 'Загрузка'}
+
+      {!isLoadMoreCards && (<button onClick={() => setIsLoadMoreCards(true)}>Загрузить еще</button>)}
+
+      {errorLoading && (
+        <div role="alert">
+          {errorLoading}
+        </div>
+      )}
     </ul>
   );
 }
