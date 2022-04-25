@@ -1,8 +1,9 @@
 import { ThunkAction } from 'redux-thunk';
-import { meReducer, MeState } from './me/reducer';
 import { ME_REQUEST, ME_REQUEST_SUCCESS, ME_REQUEST_ERROR, MeRequestAction, MeRequestErrorAction, MeRequestSuccessAction } from './me/actions';
 import { SET_TOKEN, SetTokenAction } from './token/actions';
-import { TokenState, tokenReducer } from './token/reducer'
+import { tokenInitialState } from './token/reducer';
+import { TToken, tokenReducer } from './token/reducer'
+import { meReducer, MeState, meInitialState } from './me/reducer';
 import { ActionCreator, AnyAction, Reducer, Action } from 'redux';
 
 const UPDATE_COMMENT = 'UPDATE_COMMENT';
@@ -14,18 +15,14 @@ type UpdateCommentAction = {
 
 export type RootState = {
   commentText: string;
-  token:  TokenState;
+  token: TToken;
   me: MeState
 }
 
 const initialState: RootState = {
   commentText: 'Привет!',
-  token: null,
-  me: {
-    loading: false,
-    error: '',
-    data: {}
-  }
+  token: tokenInitialState,
+  me: meInitialState
 }
 
 type MyAction = UpdateCommentAction | SetTokenAction | MeRequestAction | MeRequestErrorAction | MeRequestSuccessAction;
@@ -47,7 +44,10 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
         commentText: action.payload,
       };
     case SET_TOKEN:
-      return tokenReducer(state, action)
+      return {
+        ...state,
+        token: tokenReducer(state.token, action)
+      }
     case ME_REQUEST:
     case ME_REQUEST_SUCCESS:
     case ME_REQUEST_ERROR:

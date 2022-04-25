@@ -7,9 +7,15 @@ export type MeState = {
   data: {}
 }
 
+export const meInitialState: MeState = {
+  loading: false,
+  error: '',
+  data: {}
+}
+
 type MeActions = MeRequestAction | MeRequestErrorAction | MeRequestSuccessAction;
 
-export const meReducer: Reducer<MeState, MeActions> = (state, action) => {
+export const meReducer: Reducer<MeState, MeActions> = (state = meInitialState, action) => {
   switch(action.type) {
     case ME_REQUEST:
       return {

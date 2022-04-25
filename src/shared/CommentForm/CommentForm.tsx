@@ -1,16 +1,17 @@
 import React, {ChangeEvent, FormEvent, forwardRef} from 'react';
+import { FormikTouched, FormikErrors } from 'formik';
 import styles from './styles.scss';
 
 interface CommentFormProps {
   className: string;
   values: {comment: string};
-  errors: {comment: string}
+  errors: FormikErrors<{comment: string}>
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur: (event: FormEvent) => void;
   onSubmit: () => void;
   isFocus: boolean;
   name: string;
-  touched: {comment: boolean};
+  touched: FormikTouched<{comment: boolean}>;
   setIsFocus: (arg0: boolean) => void;
 }
 

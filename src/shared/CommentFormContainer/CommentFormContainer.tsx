@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, updateComment } from '../../store/reducer';
+import { IUserData } from '../../store/me/actions';
 import { CommentForm } from '../CommentForm';
 import { Formik, FormikErrors, FormikHandlers } from 'formik';
 
@@ -18,7 +19,7 @@ const CommentFormContainer: React.FC<ContainerCommentFormProps> = ({ className }
 
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
-  const { name } = useSelector<RootState>(store => store.me.data);
+  const {name} = useSelector<RootState, IUserData>(store => store.me.data);
 
   function handleSubmit(values: FormValues) {
     console.log('Отправлено: ', values.comment);
@@ -44,7 +45,7 @@ const CommentFormContainer: React.FC<ContainerCommentFormProps> = ({ className }
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={handleSubmit} handleChange>
       {
-        ({ values, errors, handleSubmit, handleChange, handleBlur, touched }) => <CommentForm values={values} touched={touched} errors={errors} setIsFocus={setIsFocus} isFocus={isFocus} className={className} name={name || ''} onChange={(ev) => {(updateInputState(ev, handleChange, values))}} onBlur={handleBlur} onSubmit={handleSubmit} />
+        ({ values, errors, handleSubmit, handleChange, handleBlur, touched }) => <CommentForm values={values} touched={touched} errors={errors} setIsFocus={setIsFocus} isFocus={isFocus} className={className} name={name || ''} onChange={(ev) => { (updateInputState(ev, handleChange, values)) }} onBlur={handleBlur} onSubmit={handleSubmit} />
       }
     </Formik>)
 }
