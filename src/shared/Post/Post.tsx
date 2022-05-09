@@ -3,19 +3,23 @@ import ReactDOM from 'react-dom';
 import styles from './styles.scss';
 import { CommentFormContainer } from '@shared/CommentFormContainer';
 import { CommentsSection } from '@shared/CommentsSection';
+import { useNavigate } from 'react-router-dom';
 interface IPostProps {
   onClose?: () => void
-  permalinkComments: string
-  title: string
+  // permalinkComments: string
+  // title: string
 }
 
 const Post = (props: IPostProps) => {
   const ref = useRef<HTMLDivElement>(null)
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if(event.target instanceof Node && !ref.current?.contains(event.target)) {
-        props.onClose?.();
+        // props.onClose?.();
+        navigate('/posts');
         document.body.style.overflow = 'scroll';
       }
     }

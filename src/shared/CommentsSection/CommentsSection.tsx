@@ -7,6 +7,7 @@ import { ControlledComment } from '@shared/ControlledComment';
 
 import styles from './styles.scss'
 import { useComments } from '../../hooks/useComments';
+import { useParams } from 'react-router-dom';
 
 interface ICommentData {
   data: {
@@ -16,8 +17,9 @@ interface ICommentData {
   }
 }
 
-const CommentsSection = ({permalinkComments}: {permalinkComments: string}) => {
-  const [commentsData] = useComments(permalinkComments)
+const CommentsSection = () => {
+  const { id } = useParams<'id'>();
+  const [commentsData] = useComments(id || '');
 
   return (
     <div>

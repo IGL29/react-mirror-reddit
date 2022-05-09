@@ -4,7 +4,7 @@ import cn from 'classnames';
 // Internals
 import {MetaData} from '@shared/CardsList/Card/MetaData';
 import styles from './title.scss';
-import {Post} from '@shared/Post';
+import { Link } from 'react-router-dom';
 
 interface ITextContentProps {
   className?: string;
@@ -16,11 +16,9 @@ interface ITextContentProps {
 }
 
 export default function TextContent({className = '', author, title, created, permalinkComments}: ITextContentProps): JSX.Element {
-  const [isModalOpened, setIsModalOpened] = useState(false);
 
   const openModal = () => {
     document.body.style.overflow ='hidden';
-    setIsModalOpened(!isModalOpened);
   }
 
   return (
@@ -28,12 +26,10 @@ export default function TextContent({className = '', author, title, created, per
       <MetaData created={created} author={author}/>
 
       <h2 className={styles.title}>
-        <a href='#post-url' onClick={ openModal } className={styles.postLink}>
+        <Link to={`/posts/${permalinkComments}`} onClick={ openModal } className={styles.postLink}>
           {title}
-        </a>
+        </Link>
       </h2>
-
-    {isModalOpened && <Post permalinkComments={permalinkComments} title={title} onClose={() => setIsModalOpened(false)} />}
     </div>
   )
 }

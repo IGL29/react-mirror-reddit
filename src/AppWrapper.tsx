@@ -1,6 +1,7 @@
 // Vendor
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { BrowserRouter } from 'react-router-dom';
 // Internals
 import './styles/main.global.scss';
 import { AppComponent } from './App'
@@ -15,9 +16,16 @@ const store = createStore(rootReducer, composeWithDevTools(
 ));
 
 function AppWrapper(): JSX.Element {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <Provider store={store}>
-      <AppComponent />
+      {mounted && (
+        <BrowserRouter>
+          <AppComponent />
+        </BrowserRouter>
+      )}
     </Provider>
   );
 }
