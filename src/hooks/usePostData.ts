@@ -35,14 +35,15 @@ export const usePostData = () => {
       setIsLoading(true);
       setErrorLoading('');
 
+      const limit = 3;
+
       try {
         const { data: { data: { after, children: listPosts } } } = await axios.get('https://oauth.reddit.com/best', {
           headers: { Authorization: `bearer ${token}` },
           params: {
-            limit: 3,
+            limit: limit,
             after: nextAfter
           }
-
         });
 
         setCountDownloads(prevCountDownloads => ++prevCountDownloads)

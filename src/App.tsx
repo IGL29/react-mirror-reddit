@@ -17,11 +17,9 @@ import './styles/main.global.scss';
 
 function AppComponent(): JSX.Element {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(saveToken());
-    navigate('/posts');
   }, [])
 
   return (
@@ -33,13 +31,16 @@ function AppComponent(): JSX.Element {
       <Container>
         <Content>
           <Routes>
-            <Route path='/posts' element={
-              <PostContextProvider>
-                <CardList />
-              </PostContextProvider>}
-            />
-            <Route path='/posts/:id' element={<Post />} />
-            <Route path='*' element={<PageNotFound />} />
+            <Route path='/auth' element={<Navigate to='/posts' />} />
+            <Route path='/' element={<Navigate to='/posts' />} />
+
+            <Route path='/' element={<PostContextProvider />}>
+              <Route path='/posts' element={<CardList />}>
+                <Route path=':id' element={<Post />} />
+              </Route>
+
+              <Route path='*' element={<PageNotFound />} />
+            </Route>
           </Routes>
         </Content>
       </Container>

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 
 // Uncontrolled
@@ -19,7 +20,7 @@ interface ICommentData {
 
 const CommentsSection = () => {
   const { id } = useParams<'id'>();
-  const [commentsData] = useComments(id || '');
+  const [commentsData, isLoading, isError] = useComments(id || '');
 
   return (
     <div>
@@ -33,7 +34,11 @@ const CommentsSection = () => {
 
       {/* // Controlled */}
 
-      {commentsData ? commentsData[1]?.data?.children.map((commentData: ICommentData, index: number) => <ControlledComment key={index} data={commentData.data} /> ): <p className={styles.loader}>Загружаем...</p>}
+      {isLoading && <p className={styles.loader}>Загружаем...</p>}
+
+      {commentsData && commentsData[1]?.data?.children?.length && commentsData[1]?.data?.children.map((commentData: ICommentData, index: number)  => <ControlledComment key={index} data={commentData.data} /> )}
+
+      {isError && <p className={styles.error}>Произошла ошибка при загрузке</p>}
     </div>
   )
 }

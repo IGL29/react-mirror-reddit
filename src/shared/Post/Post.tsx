@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './styles.scss';
@@ -18,7 +19,6 @@ const Post = (props: IPostProps) => {
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if(event.target instanceof Node && !ref.current?.contains(event.target)) {
-        // props.onClose?.();
         navigate('/posts');
         document.body.style.overflow = 'scroll';
       }

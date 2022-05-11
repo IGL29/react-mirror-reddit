@@ -1,9 +1,11 @@
+//@ts-nocheck
 // Vendor
 import React, { useContext } from 'react';
 // Internals
 import { Card } from './Card';
 import styles from './cardList.scss';
 import {postsContext} from '../context/postsContext';
+import { Outlet } from 'react-router-dom';
 
 interface IData {
   data: {
@@ -27,24 +29,28 @@ export default function CardList(): React.ReactElement {
   const {data, isLoading, errorLoading, bottomOfList,  setIsLoadMoreCards, isLoadMoreCards} = useContext(postsContext);
 
   return (
-    <ul className={styles['cards-list']}>
-      {data.length === 0 && !isLoading && !errorLoading && (
-        <div>Нет ни одного поста</div>
-      )}
+    <div>
+      <ul className={styles['cards-list']}>
+        {data.length === 0 && !isLoading && !errorLoading && (
+          <div>Нет ни одного поста</div>
+        )}
 
-      {data.map((data: IData) => <Card key={data?.data?.id} data={data} />)}
+        {data.map((data: IData) => <Card key={data?.data?.id} data={data} />)}
 
-      <div ref={bottomOfList}/>
+        <div ref={bottomOfList}/>
 
-      {isLoading && 'Загрузка'}
+        {isLoading && 'Загрузка'}
 
-      {!isLoadMoreCards && (<button onClick={() => setIsLoadMoreCards(true)}>Загрузить еще</button>)}
+        {!isLoadMoreCards && (<button onClick={() => setIsLoadMoreCards(true)}>Загрузить еще</button>)}
 
-      {errorLoading && (
-        <div role="alert">
-          {errorLoading}
-        </div>
-      )}
-    </ul>
+        {errorLoading && (
+          <div role="alert">
+            {errorLoading}
+          </div>
+        )}
+      </ul>
+
+      <Outlet />
+    </div>
   );
 }
